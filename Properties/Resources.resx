@@ -226,6 +226,9 @@
   <data name="NextClip" xml:space="preserve">
     <value>Next сlip</value>
   </data>
+  <data name="PreviousClip" xml:space="preserve">
+    <value>Previous сlip</value>
+  </data>
   <data name="VersionValue" xml:space="preserve">
     <value>2.04</value>
   </data>

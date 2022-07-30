@@ -803,6 +803,15 @@ namespace ClipAngel.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Previous сlip.
+        /// </summary>
+        public static string PreviousClip {
+            get {
+                return ResourceManager.GetString("PreviousClip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to reset settings to default values?.
         /// </summary>
         public static string QuestionResetSettings {

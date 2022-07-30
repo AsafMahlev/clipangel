@@ -735,6 +735,8 @@ namespace ClipAngel
                 keyboardHook.RegisterHotKey(Modifiers, Key);
             if (ReadHotkeyFromText(ClipAngel.Properties.Settings.Default.GlobalHotkeyIncrementalPaste, out Modifiers, out Key))
                 keyboardHook.RegisterHotKey(Modifiers, Key);
+            if (ReadHotkeyFromText(ClipAngel.Properties.Settings.Default.GlobalHotkeyPasteAndSelectPrevious, out Modifiers, out Key))
+                keyboardHook.RegisterHotKey(Modifiers, Key);
             if (ReadHotkeyFromText(ClipAngel.Properties.Settings.Default.GlobalHotkeyCompareLastClips, out Modifiers, out Key))
                 keyboardHook.RegisterHotKey(Modifiers, Key);
             if (ReadHotkeyFromText(ClipAngel.Properties.Settings.Default.GlobalHotkeyPasteText, out Modifiers, out Key))
@@ -824,6 +826,32 @@ namespace ClipAngel
                     else
                         messageText = CurrentDataRow["Title"].ToString();
                     notifyIcon.ShowBalloonTip(3000, Properties.Resources.NextClip, messageText, ToolTipIcon.Info);
+                }
+                catch (Exception)
+                {
+                    int dummy = 1;
+                }
+                finally
+                {
+                    AllowHotkeyProcess = true;
+                }
+            }
+            else if (hotkeyTitle == ClipAngel.Properties.Settings.Default.GlobalHotkeyPasteAndSelectPrevious)
+            {
+                AllowHotkeyProcess = false;
+                try
+                {
+                    SendPasteClipExpress(null, PasteMethod.Standard, false, true);
+                    DataRow oldCurrentDataRow = ((DataRowView) clipBindingSource.Current).Row;
+                    clipBindingSource.MoveNext();
+                    DataRow CurrentDataRow = ((DataRowView) clipBindingSource.Current).Row;
+                    notifyIcon.Visible = true;
+                    string messageText;
+                    if (oldCurrentDataRow == CurrentDataRow)
+                        messageText = Properties.Resources.PastedLastClip;
+                    else
+                        messageText = CurrentDataRow["Title"].ToString();
+                    notifyIcon.ShowBalloonTip(3000, Properties.Resources.PreviousClip, messageText, ToolTipIcon.Info);
                 }
                 catch (Exception)
                 {
