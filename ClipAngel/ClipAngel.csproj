@@ -1,19 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2A39F72-9E01-4727-8F78-1C01AA5305D3}</ProjectGuid>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClipAngel</RootNamespace>
-    <AssemblyName>ClipAngel</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,29 +17,17 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
@@ -70,21 +47,10 @@
     <ManifestCertificateThumbprint>F9A4EBE71B6EDBC63D534AF2DE180BC741CCE382</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
-      <HintPath>packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Infralution.Localization, Version=1.2.2.0, Culture=neutral, PublicKeyToken=af4bb5454ff71782, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\Infralution.Localization.dll</HintPath>
@@ -94,483 +60,37 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>C:\Program Files (x86)\Microsoft.NET\Primary Interop Assemblies\Microsoft.mshtml.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\System.Data.SQLite.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
-      <HintPath>packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SecretData1.cs" />
-    <Compile Include="ClipboardHelper.cs" />
-    <Compile Include="Components\Attributes.cs" />
-    <Compile Include="Components\CueComboBox.cs">
+    <Compile Update="Components\CueComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\Descriptors.cs" />
-    <Compile Include="Components\IconTools.cs" />
-    <Compile Include="Components\InputBox.cs" />
-    <Compile Include="Components\MyDataGridView.cs">
+    <Compile Update="Components\MyDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\Paster.cs" />
-    <Compile Include="Components\PortableSettingsProvider .cs" />
-    <Compile Include="Components\DataGridViewRichTextBoxColumn.cs" />
-    <Compile Include="Components\UacHelper.cs" />
-    <Compile Include="Components\ZoomablePictureBox.cs">
+    <Compile Update="Components\ZoomablePictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ConnectRecipientForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConnectRecipientForm.Designer.cs">
-      <DependentUpon>ConnectRecipientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Crypter.cs" />
-    <Compile Include="dbDataSet.cs">
+    <Compile Update="dbDataSet.cs">
       <DependentUpon>dbDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dbDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="AppListEditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppListEditorForm.Designer.cs">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HotkeyEditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HotkeyEditorForm.Designer.cs">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\RichTextBoxPrinter.cs" />
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SecretData.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PasteSpecial.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PasteSpecial.Designer.cs">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SyntaxHighlighter.cs" />
-    <Compile Include="Tips.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tips.Designer.cs">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AboutBox.de.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.el.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.es.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.fr.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.hi.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.it.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.pl.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.pt-BR.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.ru.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox.zh-Hans.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.de.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.el.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.es.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.fr.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.hi.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.it.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.pl.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.pt-BR.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.ru.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListEditorForm.zh-Hans.resx">
-      <DependentUpon>AppListEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConnectRecipientForm.resx">
-      <DependentUpon>ConnectRecipientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConnectRecipientForm.ru.resx">
-      <DependentUpon>ConnectRecipientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.de.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.el.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.es.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.fr.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.hi.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.it.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.pl.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.pt-BR.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.ru.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HotkeyEditorForm.zh-Hans.resx">
-      <DependentUpon>HotkeyEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.de.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.el.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.es.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.fr.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.hi.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.it.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.pl.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.pt-BR.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.ru.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.zh-Hans.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.de.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.el.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.es.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.fr.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.hi.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.it.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.pl.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.pt-BR.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.ru.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.zh-Hans.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.de.resx" />
-    <EmbeddedResource Include="Properties\Resources.el.resx" />
-    <EmbeddedResource Include="Properties\Resources.es.resx" />
-    <EmbeddedResource Include="Properties\Resources.fr.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.hi.resx" />
-    <EmbeddedResource Include="Properties\Resources.it.resx" />
-    <EmbeddedResource Include="Properties\Resources.pl.resx" />
-    <EmbeddedResource Include="Properties\Resources.pt-BR.resx" />
-    <EmbeddedResource Include="Properties\Resources.ru.resx" />
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.zh-Hans.resx" />
-    <EmbeddedResource Include="SettingsForm.de.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.el.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.es.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.fr.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.hi.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.it.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.pl.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.pt-BR.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.ru.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.zh-Hans.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasteSpecial.resx">
-      <DependentUpon>PasteSpecial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.de.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.el.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.es.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.fr.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.hi.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.it.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.ko.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.pl.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.pt-BR.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.ru.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tips.zh-Hans.resx">
-      <DependentUpon>Tips.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.de.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.de.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.es.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.es.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.fr.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.fr.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.hi.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.hi.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.it.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.it.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.pl.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.pl.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.pt-BR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.pt-BR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.RU.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisibleUserSettings.zh-Hans.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VisibleUserSettings.zh-Hans.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="dbDataSet.xsc">
+    <None Update="dbDataSet.xsc">
       <DependentUpon>dbDataSet.xsd</DependentUpon>
     </None>
-    <None Include="dbDataSet.xsd">
+    <None Update="dbDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>dbDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="dbDataSet.xss">
+    <None Update="dbDataSet.xss">
       <DependentUpon>dbDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DB\db.sqlite" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Filter.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\TypeFile.png" />
-    <None Include="Picture\TypeHtml.png" />
-    <None Include="Picture\TypeImg.png" />
-    <None Include="Picture\TypeRtf.png" />
-    <None Include="Picture\TypeText.png" />
-    <None Include="Picture\alien.ico" />
-    <None Include="Picture\Alien-64x64.png" />
-    <None Include="Picture\word wrap.png" />
-    <None Include="Picture\Top1.png" />
-    <None Include="Picture\Top2.png" />
-    <None Include="Picture\delete.png" />
-    <None Include="Picture\Set favorite.png" />
-    <None Include="Picture\Reset favorite.png" />
-    <None Include="Picture\FindNext.png" />
-    <None Include="Picture\FindPrevious.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -585,82 +105,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Picture\TopMostWindow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\OpenFile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\FixedWidthFont.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Compare.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\TextFormatting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Paste.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Dublicate.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Autoselect first match.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\MoveCopiedClipToTop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Open with.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\upload.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\translate.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\keyboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\clear2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\clear1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\eye.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\up.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\down.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\ClearFilter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\merge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\FindOptions.png" />
   </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\ClipAngel.de.xlf" />
@@ -674,18 +122,6 @@
     <XliffResource Include="MultilingualResources\ClipAngel.zh-Hans.xlf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Picture\calendar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Columns.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\Tip 32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Picture\alien - no capture .ico" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="UIAutomationClient">
       <Guid>{944DE083-8FB8-45CF-BCB7-C477ACB2F897}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -697,21 +133,26 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Picture\Filter.png" />
+    <PackageReference Include="AngleSharp" Version="0.9.9" />
+    <PackageReference Include="InputSimulator" Version="1.0.4.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.TestApi" Version="0.6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="QRCoder" Version="1.4.1" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.336902">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Send.gif" />
+    <Compile Remove="Properties\Resources1.Designer.cs" />
+    <Compile Remove="Properties\Resources2.Designer.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
   <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 </Project>

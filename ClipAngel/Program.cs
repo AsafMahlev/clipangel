@@ -101,6 +101,7 @@ namespace ClipAngel
                     // http://stackoverflow.com/questions/1382617/how-to-make-designer-generated-net-application-settings-portable/2579399#2579399
                     UserSettingsPath = MakePortable(Properties.Settings.Default, PortableMode);
                     Application.EnableVisualStyles();
+                    Application.SetHighDpiMode(HighDpiMode.SystemAware);
                     Application.SetCompatibleTextRenderingDefault(false);
                     Main Main = new Main(UserSettingsPath, PortableMode, args.Contains("/m"));
                     Application.AddMessageFilter(new TestMessageFilter());
