@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipAngel", "ClipAngel.csproj", "{E2A39F72-9E01-4727-8F78-1C01AA5305D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipAngel", "ClipAngel\ClipAngel.csproj", "{E2A39F72-9E01-4727-8F78-1C01AA5305D3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EF820DAF-503B-46F0-B5E2-DFCA243116BC} = {EF820DAF-503B-46F0-B5E2-DFCA243116BC}
 	EndProjectSection
