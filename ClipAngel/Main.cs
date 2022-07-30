@@ -465,14 +465,14 @@ namespace ClipAngel
             else
                 DbFileName = UserSettingsPath + "\\" + Properties.Resources.DBShortFilename;
             ConnectionString = "data source=" + DbFileName + ";journal_mode=OFF;"; // journal_mode=OFF - Disabled transactions
-            string Reputation = "Magic67234784";
+            //string Reputation = "Magic67234784";
             if (!File.Exists(DbFileName))
             {
                 File.WriteAllBytes(DbFileName, Properties.Resources.dbTemplate);
                 m_dbConnection = new SQLiteConnection(ConnectionString);
                 m_dbConnection.Open();
                 // Encryption http://stackoverflow.com/questions/12190672/can-i-password-encrypt-sqlite-database
-                m_dbConnection.ChangePassword(Reputation);
+                //m_dbConnection.ChangePassword(Reputation);
                 m_dbConnection.Close();
             }
             if (updateEncryption)
@@ -511,7 +511,7 @@ namespace ClipAngel
                     MessageBox.Show(this, Properties.Resources.FailedChangeDatabaseFieEncryption + ": \n" + encryptException, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            ConnectionString += "Password = " + Reputation + ";";
+            //ConnectionString += "Password = " + Reputation + ";";
             m_dbConnection = new SQLiteConnection(ConnectionString);
             m_dbConnection.Open();
             SQLiteCommand command;
