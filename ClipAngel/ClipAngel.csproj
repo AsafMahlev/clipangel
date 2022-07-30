@@ -79,7 +79,6 @@
     <Compile Update="dbDataSet.cs">
       <DependentUpon>dbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SecretData.cs" />
     <None Update="dbDataSet.xsc">
       <DependentUpon>dbDataSet.xsd</DependentUpon>
     </None>
