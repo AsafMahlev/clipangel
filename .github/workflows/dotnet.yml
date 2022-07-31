@@ -1,0 +1,17 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Restore dependencies
+      run: msbuild ClipAngel.sln /property:Configuration=Release /restore
