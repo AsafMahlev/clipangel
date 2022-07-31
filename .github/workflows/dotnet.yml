@@ -23,3 +23,7 @@ jobs:
       run: nuget restore
     - name: Restore dependencies
       run: msbuild ClipAngel.sln /property:Configuration=Release
+    - uses: actions/upload-artifact@v3
+      with:
+        name: binaries
+        path: bin/release
