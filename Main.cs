@@ -255,6 +255,20 @@ namespace ClipAngel
             {"Справочник", "Catalog"},
       };
 
+
+        static private Dictionary<Keys, int> numericKeyDict = new Dictionary<Keys, int>
+        {
+            {Keys.D1, 1},
+            {Keys.D2, 2},
+            {Keys.D3, 3},
+            {Keys.D4, 4},
+            {Keys.D5, 5},
+            {Keys.D6, 6},
+            {Keys.D7, 7},
+            {Keys.D8, 8},
+            {Keys.D9, 9},
+        };
+
         //[DllImport("dwmapi", PreserveSig = true)]
         //static extern int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int attrLen);
 
@@ -2013,7 +2027,7 @@ namespace ClipAngel
             filterTextTemp = filterTextTemp.Replace("'", "''");
             if (!ClipAngel.Properties.Settings.Default.SearchWildcards)
                 filterTextTemp = filterTextTemp.Replace("%", "\\%");
-            if (ClipAngel.Properties.Settings.Default.SearchWordsIndependently)
+            if (ClipAngel.Properties.Settings.Default.SearchWordsIndependently && !ClipAngel.Properties.Settings.Default.SearchInvert  && !ClipAngel.Properties.Settings.Default.SearchWithRegex)
                 array = filterTextTemp.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
             else
                 array = new string[1] {filterTextTemp};
@@ -2024,15 +2038,24 @@ namespace ClipAngel
                 fields.Add("Url");
             }
             string sqlSearchFilter = "";
+            var inverted = ClipAngel.Properties.Settings.Default.SearchInvert ? " NOT " : " "; 
+            
             foreach (string field in fields)
             {
                 sqlSearchFilter += " OR (1=1";
                 foreach (var word in array)
                 {
-                    if (ClipAngel.Properties.Settings.Default.SearchCaseSensitive)
-                        sqlSearchFilter += "\n AND " + field + " Like '%" + word + "%' ESCAPE '\\'";
+                    if (ClipAngel.Properties.Settings.Default.SearchWithRegex)
+                    {
+                        sqlSearchFilter += "\n AND " + inverted + field + " REGEXP '" + word + "' ";
+                    }
                     else
-                        sqlSearchFilter += "\n AND UPPER(" + field + ") Like UPPER('%" + word + "%') ESCAPE '\\'";
+                    {
+                        if (ClipAngel.Properties.Settings.Default.SearchCaseSensitive)
+                            sqlSearchFilter += "\n AND " + inverted + field + " Like '%" + word + "%' ESCAPE '\\'";
+                        else
+                            sqlSearchFilter += "\n AND " + inverted + " UPPER(" + field + ") Like UPPER('%" + word + "%') ESCAPE '\\'";
+                    }
                 }
                 sqlSearchFilter += ")";
             }
@@ -4291,6 +4314,34 @@ namespace ClipAngel
                 e.SuppressKeyPress = true;
                 e.Handled = true;
             }
+            
+            int numericKey = 0;
+            if (e.Alt && e.KeyCode == Keys.C)
+            {
+                e.Handled = true;
+                caseSensetiveToolStripMenuItem_Click(null, null);
+            }
+            else if (e.Alt && e.KeyCode == Keys.R)
+            {
+                e.Handled = true;
+                regexSearchMenuItem_Click(null, null);
+            }
+            else if (e.Alt && e.KeyCode == Keys.W)
+            {
+                e.Handled = true;
+                everyWordIndependentToolStripMenuItem_Click(null, null);
+            } else if (e.Alt && e.KeyCode == Keys.I)
+            {
+                e.Handled = true;
+                inverseSearchMenuItem_Click(null, null);
+            } else if (e.Control && e.Alt && numericKeyDict.TryGetValue(e.KeyCode, out numericKey))
+            {
+                var selected = dataGridView.Rows.OfType<DataGridViewRow>().Where(r => r.Visible).Skip(numericKey - 1).FirstOrDefault();
+                if (selected != null)
+                {
+                    SendPasteClipExpress(selected, PasteMethod.Standard, false, true);    
+                }
+            }
         }
 
         private bool ProcessEnterKeyDown(bool isControlPressed, bool isShiftPressed)
@@ -4990,6 +5041,8 @@ namespace ClipAngel
             TypeFilter.DisplayMember = "Text";
             VisibleUserSettings allSettings = new VisibleUserSettings(this);
             searchAllFieldsMenuItem.ToolTipText = allSettings.GetProperties().Find("SearchAllFields", true).Description;
+            regexSearchMenuItem.ToolTipText = allSettings.GetProperties().Find("SearchWithRegex", true).Description;
+            inverseSearchMenuItem.ToolTipText = allSettings.GetProperties().Find("SearchInvert", true).Description;
             toolStripButtonAutoSelectMatch.ToolTipText = allSettings.GetProperties().Find("AutoSelectMatch", true).Description;
             autoselectMatchedClipMenuItem.ToolTipText = allSettings.GetProperties().Find("AutoSelectMatchedClip", true).Description;
             filterListBySearchStringMenuItem.ToolTipText = allSettings.GetProperties().Find("FilterListBySearchString", true).Description;
@@ -5964,6 +6017,8 @@ namespace ClipAngel
         private void UpdateControlsStates()
         {
             searchAllFieldsMenuItem.Checked = ClipAngel.Properties.Settings.Default.SearchAllFields;
+            regexSearchMenuItem.Checked = ClipAngel.Properties.Settings.Default.SearchWithRegex;
+            inverseSearchMenuItem.Checked = ClipAngel.Properties.Settings.Default.SearchInvert;
             filterListBySearchStringMenuItem.Checked = ClipAngel.Properties.Settings.Default.FilterListBySearchString;
             autoselectMatchedClipMenuItem.Checked = ClipAngel.Properties.Settings.Default.AutoSelectMatchedClip;
             toolStripMenuItemSecondaryColumns.Checked = ClipAngel.Properties.Settings.Default.ShowSecondaryColumns;
@@ -7674,6 +7729,21 @@ namespace ClipAngel
             UpdateControlsStates();
             SearchStringApply();
         }
+        
+        
+        private void regexSearchMenuItem_Click(object sender, EventArgs e)
+        {
+            ClipAngel.Properties.Settings.Default.SearchWithRegex = !ClipAngel.Properties.Settings.Default.SearchWithRegex;
+            UpdateControlsStates();
+            SearchStringApply();
+        }
+
+        private void inverseSearchMenuItem_Click(object sender, EventArgs e)
+        {
+            ClipAngel.Properties.Settings.Default.SearchInvert = !ClipAngel.Properties.Settings.Default.SearchInvert;
+            UpdateControlsStates();
+            SearchStringApply();
+        }
 
         private void exportMenuItem_Click(object sender, EventArgs e)
         {
@@ -8288,6 +8358,40 @@ namespace ASC.Data.SQLite
         {
             if (args.Length == 0 || args[0] == null) return null;
             return ((string)args[0]).ToUpper();
+        }
+    }
+
+    /// <summary>
+    /// Function to use regex
+    /// </summary>
+    [SQLiteFunction(Name = "regexp", Arguments = 2, FuncType = FunctionType.Scalar)]
+    public class RegexpFunction : SQLiteFunction
+    {
+        public static Dictionary<string, Regex> Regexs = new Dictionary<string, Regex>();
+
+        /// <summary>
+        /// Вызов скалярной функции Upper().
+        /// </summary>
+        /// <param name="args">Параметры функции</param>
+        /// <returns>Строка в верхнем регистре</returns>
+        public override object Invoke(object[] args)
+        {
+            if (args.Length < 2 || args[0] == null) return null;
+            try
+            {
+                Regex r;
+                var pattern = args[0].ToString();
+                if (!Regexs.TryGetValue(pattern, out r))
+                {
+                    Regexs[pattern] = new Regex(pattern);
+                    r = new Regex(pattern);
+                }
+                return r.IsMatch(args[1] as string) ? 1 : 0;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

@@ -967,5 +967,29 @@ namespace ClipAngel.Properties {
                 this["GlobalHotkeyPasteAndSelectPrevious"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SearchWithRegex {
+            get {
+                return ((bool)(this["SearchWithRegex"]));
+            }
+            set {
+                this["SearchWithRegex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SearchInvert {
+            get {
+                return ((bool)(this["SearchInvert"]));
+            }
+            set {
+                this["SearchInvert"] = value;
+            }
+        }
     }
 }

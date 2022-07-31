@@ -745,6 +745,8 @@ namespace ClipAngel
             WordWrap = Properties.Settings.Default.WordWrap;
             ShowNativeTextFormatting = Properties.Settings.Default.ShowNativeTextFormatting;
             SearchWordsIndependently = Properties.Settings.Default.SearchWordsIndependently;
+            SearchWithRegex = Properties.Settings.Default.SearchWithRegex;
+            SearchInvert = Properties.Settings.Default.SearchInvert;
             SearchWildcards = Properties.Settings.Default.SearchWildcards;
             AutoSelectMatch = Properties.Settings.Default.AutoSelectMatch;
             SearchCaseSensitive = Properties.Settings.Default.SearchCaseSensitive;
@@ -1093,6 +1095,14 @@ namespace ClipAngel
         [GlobalizedCategory("Search")]
         [Editor(typeof(MyBoolEditor), typeof(UITypeEditor))]
         public bool SearchWordsIndependently { get; set; }
+        
+        [GlobalizedCategory("Search")]
+        [Editor(typeof(MyBoolEditor), typeof(UITypeEditor))]
+        public bool SearchWithRegex { get; set; }
+        
+        [GlobalizedCategory("Search")]
+        [Editor(typeof(MyBoolEditor), typeof(UITypeEditor))]
+        public bool SearchInvert { get; set; }
 
         [GlobalizedCategory("Search")]
         [Editor(typeof(MyBoolEditor), typeof(UITypeEditor))]

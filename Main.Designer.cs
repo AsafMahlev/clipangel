@@ -282,6 +282,8 @@ namespace ClipAngel
             this.ignoreBigTextsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterListBySearchStringMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchAllFieldsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regexSearchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inverseSearchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonFindNext = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFindPrevious = new System.Windows.Forms.ToolStripButton();
             this.MarkFilter = new System.Windows.Forms.ComboBox();
@@ -573,7 +575,10 @@ namespace ClipAngel
             this.toolStripMenuItemSearchWildcards,
             this.ignoreBigTextsToolStripMenuItem,
             this.filterListBySearchStringMenuItem,
-            this.searchAllFieldsMenuItem});
+            this.searchAllFieldsMenuItem,
+            this.regexSearchMenuItem,
+            this.inverseSearchMenuItem
+            });
             this.toolStripSearchOptions.Image = global::ClipAngel.Properties.Resources.FindOptions;
             resources.ApplyResources(this.toolStripSearchOptions, "toolStripSearchOptions");
             this.toolStripSearchOptions.Name = "toolStripSearchOptions";
@@ -649,6 +654,24 @@ namespace ClipAngel
             this.searchAllFieldsMenuItem.Name = "searchAllFieldsMenuItem";
             resources.ApplyResources(this.searchAllFieldsMenuItem, "searchAllFieldsMenuItem");
             this.searchAllFieldsMenuItem.Click += new System.EventHandler(this.searchAllFieldsMenuItem_Click);
+            // 
+            // searchAllFieldsMenuItem
+            // 
+            this.regexSearchMenuItem.Checked = true;
+            this.regexSearchMenuItem.CheckOnClick = true;
+            this.regexSearchMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.regexSearchMenuItem.Name = "regexSearchMenuItem";
+            resources.ApplyResources(this.regexSearchMenuItem, "regexSearchMenuItem");
+            this.regexSearchMenuItem.Click += new System.EventHandler(this.regexSearchMenuItem_Click);
+            // 
+            // searchAllFieldsMenuItem
+            // 
+            this.inverseSearchMenuItem.Checked = true;
+            this.inverseSearchMenuItem.CheckOnClick = true;
+            this.inverseSearchMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.inverseSearchMenuItem.Name = "inverseSearchMenuItem";
+            resources.ApplyResources(this.inverseSearchMenuItem, "inverseSearchMenuItem");
+            this.inverseSearchMenuItem.Click += new System.EventHandler(this.inverseSearchMenuItem_Click);
             // 
             // toolStripButtonFindNext
             // 
@@ -2509,6 +2532,8 @@ namespace ClipAngel
         private System.Windows.Forms.ToolStripMenuItem PreviousMatchListMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteIntoSearchFieldMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchAllFieldsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regexSearchMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inverseSearchMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private Infralution.Localization.CultureManager cultureManager5;

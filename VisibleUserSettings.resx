@@ -457,6 +457,18 @@ Not appliable to HTML native formatting.</value>
   <data name="SearchWordsIndependentlyDescription" xml:space="preserve">
     <value>Search every word from filter independently. For example "pot web" will match "Our website sells potato". </value>
   </data>
+  <data name="SearchWithRegex" xml:space="preserve">
+    <value>Search with a regular expression.</value>
+  </data>
+  <data name="SearchWithRegexDescription" xml:space="preserve">
+    <value>Search with a regular expression. For example "pot.*o" will match "potato". </value>
+  </data>
+  <data name="SearchInvert" xml:space="preserve">
+    <value>Invert the search query</value>
+  </data>
+  <data name="SearchInvertDescription" xml:space="preserve">
+    <value>Match only items that are not included. For example "potato" will match "apple" but not "potato". </value>
+  </data>
   <data name="ShowApplicationIconColumn" xml:space="preserve">
     <value>Show clip source icon column</value>
   </data>

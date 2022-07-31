@@ -239,6 +239,12 @@
     <Setting Name="GlobalHotkeyPasteAndSelectPrevious" Type="System.String" Scope="User">
       <Value Profile="(Default)">No</Value>
     </Setting>
+    <Setting Name="SearchWithRegex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SearchInvert" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
 

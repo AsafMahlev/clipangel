@@ -165,6 +165,12 @@
   <data name="toolStripMenuItemSearchCaseSensitive.Text" xml:space="preserve">
     <value>Case sensitive</value>
   </data>
+  <data name="regexSearchMenuItem.Text" xml:space="preserve">
+    <value>Regex</value>
+  </data>
+  <data name="inverseSearchMenuItem.Text" xml:space="preserve">
+    <value>Invert</value>
+  </data>
   <data name="toolStripMenuItemSearchWordsIndependently.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
