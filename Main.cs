@@ -2027,7 +2027,7 @@ namespace ClipAngel
             filterTextTemp = filterTextTemp.Replace("'", "''");
             if (!ClipAngel.Properties.Settings.Default.SearchWildcards)
                 filterTextTemp = filterTextTemp.Replace("%", "\\%");
-            if (ClipAngel.Properties.Settings.Default.SearchWordsIndependently && !ClipAngel.Properties.Settings.Default.SearchInvert  && !ClipAngel.Properties.Settings.Default.SearchWithRegex)
+            if (ClipAngel.Properties.Settings.Default.SearchWordsIndependently && !ClipAngel.Properties.Settings.Default.SearchInvert)
                 array = filterTextTemp.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
             else
                 array = new string[1] {filterTextTemp};
@@ -4319,23 +4319,29 @@ namespace ClipAngel
             if (e.Alt && e.KeyCode == Keys.C)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;    
                 caseSensetiveToolStripMenuItem_Click(null, null);
             }
             else if (e.Alt && e.KeyCode == Keys.R)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;    
                 regexSearchMenuItem_Click(null, null);
             }
             else if (e.Alt && e.KeyCode == Keys.W)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;    
                 everyWordIndependentToolStripMenuItem_Click(null, null);
             } else if (e.Alt && e.KeyCode == Keys.I)
             {
                 e.Handled = true;
+                e.SuppressKeyPress = true;    
                 inverseSearchMenuItem_Click(null, null);
-            } else if (e.Control && e.Alt && numericKeyDict.TryGetValue(e.KeyCode, out numericKey))
+            } else if (e.Alt && numericKeyDict.TryGetValue(e.KeyCode, out numericKey))
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;    
                 var selected = dataGridView.Rows.OfType<DataGridViewRow>().Where(r => r.Visible).Skip(numericKey - 1).FirstOrDefault();
                 if (selected != null)
                 {
@@ -4691,9 +4697,10 @@ namespace ClipAngel
             {
                 if (result != "")
                     result += "|";
-                result += "(" + Regex.Escape(word) + ")";
+                result += "(" + (ClipAngel.Properties.Settings.Default.SearchWithRegex ? word : Regex.Escape(word)) + ")";
             }
-            if (ClipAngel.Properties.Settings.Default.SearchWildcards)
+            
+            if (ClipAngel.Properties.Settings.Default.SearchWildcards && !ClipAngel.Properties.Settings.Default.SearchWithRegex)
                 result = result.Replace("%", ".*?");
             if (!String.IsNullOrWhiteSpace(result))
                 result = "(" + result + ")";
@@ -8367,7 +8374,8 @@ namespace ASC.Data.SQLite
     [SQLiteFunction(Name = "regexp", Arguments = 2, FuncType = FunctionType.Scalar)]
     public class RegexpFunction : SQLiteFunction
     {
-        public static Dictionary<string, Regex> Regexs = new Dictionary<string, Regex>();
+        public static Dictionary<string, Regex> RegexesCaseSensitive = new Dictionary<string, Regex>();
+        public static Dictionary<string, Regex> RegexesCaseInsensitive = new Dictionary<string, Regex>();
 
         /// <summary>
         /// Вызов скалярной функции Upper().
@@ -8381,12 +8389,15 @@ namespace ASC.Data.SQLite
             {
                 Regex r;
                 var pattern = args[0].ToString();
-                if (!Regexs.TryGetValue(pattern, out r))
+
+                var regexes = Settings.Default.SearchCaseSensitive ? RegexesCaseSensitive : RegexesCaseInsensitive;
+                if (!regexes.TryGetValue(pattern, out r))
                 {
-                    Regexs[pattern] = new Regex(pattern);
+                    var caseSensitive = Settings.Default.SearchCaseSensitive ? RegexOptions.None : RegexOptions.IgnoreCase;
+                    regexes[pattern] = new Regex(pattern, RegexOptions.Multiline | RegexOptions.Compiled | caseSensitive);
                     r = new Regex(pattern);
                 }
-                return r.IsMatch(args[1] as string) ? 1 : 0;
+                return r.IsMatch((string)args[1]) ? 1 : 0;
             }
             catch
             {
