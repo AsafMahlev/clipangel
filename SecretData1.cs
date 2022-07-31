@@ -1,6 +1,6 @@
 ﻿namespace ClipAngel
 {
-    public static class SecretData1
+    public static class SecretData
     {
         public static string FirebaseDatabase()
         {
