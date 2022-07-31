@@ -17,5 +17,9 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
     - name: Copy secret data
       run: copy SecretData1.cs SecretData.cs
+    - name: Setup NuGet.exe for use with action
+      uses: NuGet/setup-nuget@v1.0.6
+    - name: restore
+      run: nuget restore
     - name: Restore dependencies
-      run: msbuild ClipAngel.sln /property:Configuration=Release /restore
+      run: msbuild ClipAngel.sln /property:Configuration=Release
