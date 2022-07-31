@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.1
     - name: Restore dependencies
       run: msbuild ClipAngel.sln /property:Configuration=Release /restore
